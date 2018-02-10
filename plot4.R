@@ -1,3 +1,5 @@
+# Assumes that the file is downloaded and available in the current working directory
+
 library(lubridate)
 
 required_rows <- read.table("household_power_consumption.txt",na.strings = "?",sep=";",skip = grep("^[1,2]/2/2007", readLines("household_power_consumption.txt"))-1,nrow = grep("3/2/2007",readLines("household_power_consumption.txt"))[1] - grep("1/2/2007",readLines("household_power_consumption.txt"))[1] )
@@ -23,3 +25,5 @@ legend("topright",cex=0.5, c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3
 
 with(required_rows,plot(datetime,Global_reactive_power,type="l"))
 
+dev.copy(png,file="plot4.png")
+dev.off()

@@ -1,4 +1,5 @@
 
+# Assumes that the file is downloaded and available in the current working directory
 required_rows <- read.table("household_power_consumption.txt",na.strings = "?",sep=";",skip = grep("^[1,2]/2/2007", readLines("household_power_consumption.txt"))-1,nrow = grep("3/2/2007",readLines("household_power_consumption.txt"))[1] - grep("1/2/2007",readLines("household_power_consumption.txt"))[1] )
 colNames <- names(read.table("household_power_consumption.txt", nrow=1, header=TRUE, sep=";"))
 names(required_rows) <- colNames
